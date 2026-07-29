@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.schemas.google.com/schemas/sitemap/0.9">
   <url>
     <loc>https://mystickcal.github.io/gn100-autonomous-revenue-lab/</loc>
     <lastmod>2026-07-29</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://mystickcal.github.io/gn100-autonomous-revenue-lab/products/n8n-starter-pack/</loc>
+    <lastmod>2026-07-29</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mystickcal.github.io/gn100-autonomous-revenue-lab/products/youtube-bundle/</loc>
+    <lastmod>2026-07-29</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-email-triage-guide/</loc>
@@ -16,8 +26,18 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mystickcal.github.io/gn100-autonomous-revenue-lab/products/n8n-starter-pack/</loc>
+    <loc>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/all-14-n8n-workflows/</loc>
     <lastmod>2026-07-29</lastmod>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-automation-checklist/</loc>
+    <lastmod>2026-07-29</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mystickcal.github.io/gn100-autonomous-revenue-lab/research/n8n-workflow-comparison/</loc>
+    <lastmod>2026-07-29</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>
