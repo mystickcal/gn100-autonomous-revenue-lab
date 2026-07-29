@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>n8n Workflow Templates: What Works in Production — Made by AiMe</title>
+<meta name="description" content="A practical comparison of common n8n workflow patterns based on a live business stack. Learn when to build workflows yourself and when to use pre-built templates.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/research/n8n-workflow-comparison/">
+<meta property="og:title" content="n8n Workflow Templates: What Works in Production">
+<meta property="og:description" content="A practical comparison of n8n workflow patterns tested in a live business stack.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mystickcal.github.io/gn100-autonomous-revenue-lab/research/n8n-workflow-comparison/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7;color:#333;background:#fafafa}
+.container{max-width:720px;margin:0 auto;padding:2rem 1.5rem}
+header{text-align:center;padding:3rem 0 2rem;border-bottom:1px solid #e0e0e0;margin-bottom:2.5rem}
+header h1{font-size:1.8rem;color:#1a1a1a;margin-bottom:.75rem;line-height:1.3}
+header p{color:#666;font-size:1.05rem}
+nav{margin-bottom:2rem;border-bottom:1px solid #e0e0e0;padding-bottom:1rem}
+nav a{color:#4f46e5;text-decoration:none;font-size:.9rem;font-weight:600}
+h2{font-size:1.35rem;color:#1a1a1a;margin:2.5rem 0 1rem}
+h3{font-size:1.15rem;color:#2a2a2a;margin:1.5rem 0 .5rem}
+p{margin-bottom:1rem;color:#444}
+ul,ol{margin:1rem 0 1.5rem 1.5rem;color:#444}
+li{margin-bottom:.5rem}
+.comparison{background:#fff;border:1px solid #e5e5e5;border-radius:8px;padding:1.5rem;margin:1.5rem 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.comparison .manual{margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid #f0f0f0}
+.comparison .manual p{color:#444}
+.comparison .workflow{color:#2e7d32;font-weight:600}
+.cta-box{background:linear-gradient(135deg,#f8f6ff,#f0f0ff);border:2px solid #4f46e5;border-radius:12px;padding:2rem;margin:2.5rem 0;text-align:center}
+.cta-box h2{text-align:center;margin-bottom:.75rem}
+.cta-box p{color:#555;margin-bottom:1rem}
+.cta-btn{display:inline-block;background:#4f46e5;color:#fff;padding:.85rem 2.5rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:1.05rem;transition:background .2s}
+.cta-btn:hover{background:#4338ca}
+.guarantee{font-size:.85rem;color:#888;margin-top:.75rem}
+.workflows-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}
+.workflow-tag{background:#fff;border:1px solid #e0e0e0;border-radius:6px;padding:.75rem 1rem;font-size:.9rem;font-weight:500;color:#333}
+.workflow-tag::before{content:'\2022';color:#4f46e5;margin-right:.5rem}
+footer{text-align:center;padding:2rem 0 3rem;color:#888;font-size:.85rem;border-top:1px solid #e0e0e0;margin-top:3rem}
+footer a{color:#4f46e5;text-decoration:none}
+@media(max-width:600px){.workflows-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<nav>
+<a href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/">Home</a> &nbsp;|&nbsp;
+<a href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-email-triage-guide/">Email Triage Guide</a> &nbsp;|&nbsp;
+<a href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-invoice-automation-guide/">Invoice Guide</a> &nbsp;|&nbsp;
+<a href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/products/n8n-starter-pack/">Starter Pack</a>
+</nav>
+
+<header>
+<h1>n8n Workflow Templates: What Works in Production</h1>
+<p>A practical comparison based on a live business stack</p>
+</header>
+
+<p>n8n has hundreds of available integrations and thousands of community workflows. But most published examples are toy demos. When you actually need to run something that keeps your business on track, you need workflows that work reliably and solve real problems.</p>
+
+<p>This article compares workflow patterns tested in an AI-assisted operating stack — a small business system that runs on n8n, OpenAI, and a handful of SaaS tools. The workflows below have been used to manage actual operations tasks.</p>
+
+<h2>Email Triage: Manual vs Automated</h2>
+
+<div class="comparison">
+<div class="manual">
+<p><strong>Manual:</strong> Read every email, decide priority, respond or defer, track follow-ups. The process consumes time and creates cognitive load.</p>
+</div>
+<p class="workflow"><strong>n8n workflow:</strong> An n8n workflow can scan unread emails, classify them using an AI model, and deliver a prioritized digest. The workflow can send alerts to Telegram or Slack and categorize each message as urgent, needs reply, FYI, or junk.</p>
+</div>
+
+<p><strong>Best for:</strong> People who get more than 20 emails a day and find themselves spending the first hour of the workday on inbox.</p>
+
+<p><strong>Free guide:</strong> <a href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-email-triage-guide/">n8n Email Triage Bot — Step-by-Step Guide</a></p>
+
+<h2>Invoice Processing: Spreadsheet vs Automated</h2>
+
+<div class="comparison">
+<div class="manual">
+<p><strong>Manual:</strong> Spot an invoice in email, open it, copy data to a spreadsheet, chase payment status. Easy to miss invoices or double-count them.</p>
+</div>
+<p class="workflow"><strong>n8n workflow:</strong> An n8n workflow can detect invoices from email, extract key data points, and write them to a spreadsheet automatically. Payment status can be tracked and follow-ups triggered.</p>
+</div>
+
+<p><strong>Best for:</strong> Freelancers and small teams that need consistent invoicing without manual data entry.</p>
+
+<p><strong>Free guide:</strong> <a href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-invoice-automation-guide/">n8n Invoice Automation — Detect, Track, and Organize Invoices</a></p>
+
+<h2>Lead Scoring: Manual vs Automated</h2>
+
+<div class="comparison">
+<div class="manual">
+<p><strong>Manual:</strong> Check each form submission or inbound lead by hand, decide if they are worth pursuing, update CRM.</p>
+</div>
+<p class="workflow"><strong>n8n workflow:</strong> An n8n workflow can evaluate incoming leads against defined criteria, score them, route high-value leads to a CRM, and notify the relevant person via Slack.</p>
+</div>
+
+<p><strong>Best for:</strong> Teams that get consistent inbound leads but need a way to prioritize quickly.</p>
+
+<h2>Cross-Platform Posting: Manual vs Automated</h2>
+
+<div class="comparison">
+<div class="manual">
+<p><strong>Manual:</strong> Post the same content to Twitter, LinkedIn, and a blog one platform at a time, adjusting formats.</p>
+</div>
+<p class="workflow"><strong>n8n workflow:</strong> An n8n workflow can take one piece of content and publish it across multiple platforms simultaneously.</p>
+</div>
+
+<p><strong>Best for:</strong> Content creators who maintain a presence on multiple platforms.</p>
+
+<h2>When to Build vs Use Templates</h2>
+
+<p>Building workflows yourself teaches you the platform and gives you full control. The free guides above walk you through building the email triage and invoice workflows step by step.</p>
+
+<p>But not every workflow is worth building from scratch. When you need multiple workflows and do not have time to build each one, pre-built templates can be faster.</p>
+
+<div class="cta-box">
+<h2>The n8n Starter Pack</h2>
+<p>14 production-ready workflow templates for the most common business automation tasks:</p>
+<div class="workflows-grid">
+<div class="workflow-tag">Email Triage and Digest</div>
+<div class="workflow-tag">Invoice Automation</div>
+<div class="workflow-tag">Lead Qualification</div>
+<div class="workflow-tag">Weekly Reporting</div>
+<div class="workflow-tag">Social Media Cross-Posting</div>
+<div class="workflow-tag">Calendar Sync</div>
+<div class="workflow-tag">Google Sheets Logger</div>
+<div class="workflow-tag">Slack Notifier</div>
+<div class="workflow-tag">Data Enrichment</div>
+<div class="workflow-tag">PDF Generator</div>
+<div class="workflow-tag">Task Management</div>
+<div class="workflow-tag">Webhook Routing</div>
+<div class="workflow-tag">Scheduled Reports</div>
+<div class="workflow-tag">Approval Workflows</div>
+</div>
+<p><strong>$97 one-time</strong> — each template is an n8n JSON file you import and configure</p>
+<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta-btn">Get the n8n Starter Pack &rarr;</a>
+<p class="guarantee">30-day money-back guarantee</p>
+</div>
+
+<h2>Which Workflow to Build First?</h2>
+
+<ol>
+<li>If you get a lot of email: start with the email triage workflow.</li>
+<li>If you invoice clients and track payments manually: start with invoice automation.</li>
+<li>If you manage leads or clients: start with lead qualification.</li>
+</ol>
+
+<p>The workflows are designed to be standalone. Each one can run independently. Add more as you identify bottlenecks in your workflow.</p>
+
+<h2>Getting Started</h2>
+
+<ol>
+<li>Install n8n (free self-hosted or cloud)</li>
+<li>Follow a free guide to build one workflow</li>
+<li>Test it with your own data</li>
+<li>Add more workflows from the Starter Pack or build your own</li>
+</ol>
+
+<p>Each workflow is a starting point you can customize for your specific needs.</p>
+
+<h2>What About the Full Stack?</h2>
+
+<p>Running all 14 workflows together creates a more complete automation system. The workflows complement each other: email triage feeds into lead qualification, invoicing feeds into reporting, and so on.</p>
+
+<p>The Starter Pack is designed so that workflows can work together. Import all 14 and configure your credentials once.</p>
+
+<footer>
+<p>Based on a live business system. <a href="https://madebyaime.com">Made by AiMe</a> &copy; 2026</p>
+<p><a href="https://n8n.io" style="color:#4f46e5;text-decoration:none">n8n.io</a> &mdash; open source workflow automation</p>
+</footer>
+</div>
+</body>
+</html>
