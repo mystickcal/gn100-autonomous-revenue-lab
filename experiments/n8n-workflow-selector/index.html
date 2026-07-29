@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>n8n Workflow Pattern Selector — Find the Right Automation for Your Business</title>
+<meta name="description" content="Interactive tool that helps you discover which n8n workflow templates match your business needs. Select your pain points and get instant recommendations.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"n8n Workflow Pattern Selector","description":"Find the right n8n workflow for your business needs","applicationCategory":"UtilityApplication","operatingSystem":"Any"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--n8n:#e64a19;--n8n-light:#ff8a65;--bg:#fafafa;--card:#fff;--text:#212121;--muted:#616161;--border:#e0e0e0;--success:#4caf50;--accent:#1565c0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{max-width:800px;margin:0 auto;padding:20px}
+header{text-align:center;padding:40px 20px 20px}
+header h1{font-size:1.8rem;color:var(--n8n);margin-bottom:8px}
+header p{color:var(--muted);font-size:1.05rem;max-width:600px;margin:0 auto}
+.section-title{font-size:1.2rem;font-weight:600;margin:24px 0 12px;color:var(--text)}
+.section-subtitle{color:var(--muted);font-size:.95rem;margin-bottom:16px}
+.categories{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:24px}
+.cat-btn{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;text-align:left;transition:all .2s;font-size:.95rem;font-family:inherit}
+.cat-btn:hover{border-color:var(--n8n-light);background:#fff5f2}
+.cat-btn.selected{border-color:var(--n8n);background:#fff0ed;color:var(--n8n);font-weight:600}
+.cat-btn .cat-icon{font-size:1.3rem;margin-right:8px}
+.cat-btn .cat-label{font-weight:500}
+#actions-area{margin:20px 0}
+.actions-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.action-tag{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:.85rem;cursor:pointer;transition:all .15s;user-select:none}
+.action-tag:hover{border-color:var(--n8n-light)}
+.action-tag.selected{background:var(--n8n);color:#fff;border-color:var(--n8n)}
+.result-section{margin:28px 0}
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;transition:all .2s}
+.result-card:hover{box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.result-card h3{color:var(--n8n);margin-bottom:8px;font-size:1.1rem}
+.result-card .workflow-tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.result-card .wf-tag{background:#f5f5f5;border-radius:6px;padding:2px 8px;font-size:.8rem;color:var(--muted)}
+.result-card .description{color:var(--muted);font-size:.93rem;margin-bottom:10px}
+.cta-link{display:inline-block;background:var(--n8n);color:#fff;text-decoration:none;padding:8px 18px;border-radius:8px;font-size:.9rem;font-weight:500;transition:background .2s}
+.cta-link:hover{background:var(--n8n-light)}
+.free-cta{display:inline-block;border:1px solid var(--n8n);color:var(--n8n);text-decoration:none;padding:7px 17px;border-radius:8px;font-size:.88rem;margin-left:8px}
+.free-cta:hover{background:#fff0ed}
+.no-results{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;color:var(--muted)}
+footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:.85rem}
+#step-label{font-weight:600;margin-bottom:12px;color:var(--n8n)}
+.hidden{display:none}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>n8n Workflow Pattern Selector</h1>
+<p>Select your business category and tasks to find the right n8n workflow automations.</p>
+</header>
+
+<main>
+<div id="step1">
+<div id="step-label">Step 1: Select Your Business Category</div>
+<div class="categories" id="categories">
+<button class="cat-btn" data-cat="marketing"><span class="cat-icon">&#128220;</span> <span class="cat-label">Marketing & Social Media</span></button>
+<button class="cat-btn" data-cat="sales"><span class="cat-icon">&#128176;</span> <span class="cat-label">Sales & CRM</span></button>
+<button class="cat-btn" data-cat="operations"><span class="cat-icon">&#9881;</span> <span class="cat-label">Operations & Admin</span></button>
+<button class="cat-btn" data-cat="finance"><span class="cat-icon">&#128177;</span> <span class="cat-label">Finance & Accounting</span></button>
+<button class="cat-btn" data-cat="support"><span class="cat-icon">&#127769;</span> <span class="cat-label">Customer Support</span></button>
+<button class="cat-btn" data-cat="development"><span class="cat-icon">&#128187;</span> <span class="cat-label">Development & IT</span></button>
+</div>
+<button id="btn-next-1" class="cta-link hidden" onclick="goStep2()">Next: Select Tasks</button>
+</div>
+
+<div id="step2" class="hidden">
+<div id="step-label">Step 2: Select Tasks You Want to Automate</div>
+<div class="section-subtitle">Choose all that apply</div>
+<div class="actions-list" id="actions-list"></div>
+<button id="btn-back-2" style="margin-right:8px" class="free-cta" onclick="goStep1()">Back</button>
+<button id="btn-next-2" class="cta-link hidden" onclick="showResults()">Show Recommendations</button>
+</div>
+
+<div id="results" class="hidden result-section">
+<h2 class="section-title">Recommended n8n Workflows</h2>
+<div id="results-content"></div>
+<div style="margin-top:32px;padding:20px;background:var(--card);border:2px solid var(--n8n);border-radius:12px;text-align:center">
+<h3 style="color:var(--n8n);margin-bottom:8px">Ready to automate these workflows?</h3>
+<p style="color:var(--muted);margin-bottom:12px">Get 14 import-ready n8n workflow files, including everything above.</p>
+<a class="cta-link" href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?utm_source=selector&utm_medium=experiment&utm_campaign=organic&client_reference_id=gn100_revenue_lab">Get the n8n Starter Pack — $97</a>
+<a class="free-cta" href="/products/n8n-starter-pack-complete-guide/">Read the full guide first</a>
+</div>
+</div>
+</main>
+
+<footer>
+<p>MadeByAiMe — Autonomous Revenue Lab</p>
+</footer>
+</div>
+
+<script>
+const WORKFLOWS={
+marketing:{
+label:"Marketing & Social Media",
+actions:[
+{id:"social_schedule",name:"Schedule social posts across platforms"},
+{id:"lead_capture",name:"Capture leads from web forms"},
+{id:"content_idea",name:"Generate content ideas from trends"},
+{id:"email_campaign",name:"Automate email campaigns"},
+{id:"analytics_report",name:"Compile analytics reports"},
+{id:"review_collect",name:"Collect customer reviews"}
+],
+recommendations:{
+social_schedule:{
+name:"Multi-Platform Social Scheduler",
+description:"Automate posting to Twitter, LinkedIn, and Facebook from a single dashboard. Connect Google Sheets as your editorial calendar and n8n handles scheduling, link shortening, and hashtag tracking.",
+tags:["social media","scheduling","multi-platform"],
+priority:"high"
+},
+content_idea:{
+name:"Trend-Based Content Ideation",
+description:"Monitor Google Trends, Twitter hashtags, and industry RSS feeds to generate content ideas. Push new ideas to a Slack channel or Notion dashboard automatically.",
+tags:["content","ideation","trends"],
+priority:"high"
+},
+email_campaign:{
+name:"Automated Email Nurture Sequence",
+description:"Trigger personalized email sequences when a lead signs up. Integrate with Mailchimp or SendGrid, segment by behavior, and auto-adjust timing based on engagement.",
+tags:["email","nurture","segmentation"],
+priority:"high"
+},
+lead_capture:{
+name:"Lead Capture & Enrichment Pipeline",
+description:"When a form is submitted, enrich the lead with company data, score them, route to CRM, and notify the sales team via Slack.",
+tags:["leads","enrichment","crm"],
+priority:"medium"
+},
+analytics_report:{
+name:"Weekly Analytics Auto-Report",
+description:"Pull data from Google Analytics, social media, and email platforms into a single Google Sheet or PDF report, delivered to your inbox every Monday.",
+tags:["analytics","reporting","automated"],
+priority:"medium"
+},
+review_collect:{
+name:"Customer Review Collection Workflow",
+description:"After a purchase or support ticket closes, automatically request a review via email, collect the response, and post it to your website or directory.",
+tags:["reviews","reputation","customer-satisfaction"],
+priority:"low"
+}
+}
+},
+sales:{
+label:"Sales & CRM",
+actions:[
+{id:"lead_capture",name:"Capture leads from web forms"},
+{id:"crm_update",name:"Update CRM with new leads"},
+{id:"email_sequence",name:"Send automated follow-up emails"},
+{id:"meeting_schedule",name:"Schedule meetings automatically"},
+{id:"proposal_gen",name:"Generate proposals from templates"},
+{id:"win_lose",name:"Analyze win/lose patterns"}
+],
+recommendations:{
+lead_capture:{
+name:"Lead Ingestion & CRM Sync",
+description:"Capture leads from your website, Typeform, or LinkedIn. Enrich with Clearbit or Hunter, then push to HubSpot, Pipedrive, or Google Sheets with deduplication.",
+tags:["leads","crm","enrichment"],
+priority:"high"
+},
+email_sequence:{
+name:"Automated Sales Follow-Up Sequence",
+description:"After a lead is captured, send a timed sequence of personalized emails. Track opens and clicks, then escalate to a human when engagement spikes.",
+tags:["email","follow-up","automation"],
+priority:"high"
+},
+crm_update:{
+name:"CRM Data Enrichment & Cleanup",
+description:"Periodically scan your CRM for incomplete records. Enrich missing data from public sources, flag stale contacts, and merge duplicates.",
+tags:["crm","data-quality","enrichment"],
+priority:"medium"
+},
+meeting_schedule:{
+name:"Meeting Booking Automation",
+description:"When a lead expresses interest, check calendar availability, send a booking link, create calendar events, and send reminder emails automatically.",
+tags:["scheduling","calendar","efficiency"],
+priority:"high"
+},
+proposal_gen:{
+name:"Auto-Proposal Generator",
+description:"Pull lead data and deal details, fill a template, generate a PDF, send for e-signature, and notify your team when signed.",
+tags:["proposals","sales","document-automation"],
+priority:"medium"
+},
+win_lose:{
+name:"Win/Loss Analysis Pipeline",
+description:"Collect close notifications from your CRM, pull data from email, Slack, and call logs, then compile a weekly report showing why deals win or lose.",
+tags:["analytics","sales-opportunity","improvement"],
+priority:"low"
+}
+}
+},
+operations:{
+label:"Operations & Admin",
+label_plural:"Operations & Admin",
+actions:[
+{id:"data_sync",name:"Sync data between apps"},
+{id:"file_organize",name:"Organize files automatically"},
+{id:"task_notify",name:"Notify team about tasks"},
+{id:"document_gen",name:"Generate documents"},
+{id:"report_auto",name:"Auto-generate reports"},
+{id:"backup_sync",name:"Sync backups across services"}
+],
+recommendations:{
+data_sync:{
+name:"Cross-App Data Synchronization",
+description:"Keep data consistent across Google Sheets, Airtable, Notion, and your database. Changes in one system propagate to all others with conflict resolution.",
+tags:["sync","data-integration","multi-app"],
+priority:"high"
+},
+file_organize:{
+name:"Smart File Organization",
+description:"Monitor a Google Drive or Dropbox folder, auto-sort files by type/date/content, rename using patterns, and alert when unexpected files appear.",
+tags:["file-management","organization","drive"],
+priority:"medium"
+},
+task_notify:{
+name:"Task Notification Router",
+description:"When a task is created in Jira, Trello, or Asana, route notifications to the right Slack channel, assignee, or email based on tags and priority.",
+tags:["tasks","notifications","slack"],
+priority:"high"
+},
+document_gen:{
+name:"Document Generation Pipeline",
+description:"Fill Word, PDF, or Google Docs templates with data from forms, databases, or CRM. Generate contracts, reports, or certificates on demand.",
+tags:["documents","templates","generation"],
+priority:"medium"
+},
+report_auto:{
+name:"Automated Operations Dashboard",
+description:"Pull KPIs from multiple sources (CRM, helpdesk, project tools), compile them into a daily briefing in Slack or Google Sheets.",
+tags:["dashboard","kpi","reporting"],
+priority:"medium"
+},
+backup_sync:{
+name:"Automated Backup & Sync",
+description:"Schedule regular backups of important data to multiple storage locations (Google Drive, S3, local). Verify integrity and alert on failure.",
+tags:["backup","sync","disaster-recovery"],
+priority:"low"
+}
+}
+},
+finance:{
+label:"Finance & Accounting",
+actions:[
+{id:"invoice_auto",name:"Generate and send invoices"},
+{id:"expense_track",name:"Track expenses from receipts"},
+{id:"payment_reconcile",name:"Reconcile payments"},
+{id:"financial_report",name:"Generate financial reports"},
+{id:"bill_remind",name:"Automate bill reminders"},
+{id:"tax_prepare",name:"Organize tax documentation"}
+],
+recommendations:{
+invoice_auto:{
+name:"Automated Invoice Generation & Sending",
+description:"When a project milestone is marked complete, generate an invoice from a template, attach it to an email, and track when it is opened or paid.",
+tags:["invoicing","automation","payments"],
+priority:"high"
+},
+expense_track:{
+name:"Receipt-to-Expense Tracker",
+description:"Forward receipt emails or photos to n8n, extract line items with OCR, categorize them, and log to Google Sheets or an accounting tool.",
+tags:["expenses","receipts","accounting"],
+priority:"high"
+},
+payment_reconcile:{
+name:"Payment Reconciliation Pipeline",
+description:"Compare incoming payments from Stripe, PayPal, or bank statements against your invoicing records. Flag mismatches and generate a reconciliation report.",
+tags:["reconciliation","payments","accounting"],
+priority:"high"
+},
+financial_report:{
+name:"Monthly Financial Summary",
+description:"Pull revenue, expenses, and cash flow data, compile a P&L summary in Google Docs or PDF, and email to stakeholders on the 1st of each month.",
+tags:["reporting","financial","monthly"],
+priority:"medium"
+},
+bill_remind:{
+name:"Automated Bill Payment Reminders",
+description:"Monitor upcoming vendor bills, send internal reminders before due dates, and escalate to management for overdue approvals.",
+tags:["billing","reminders","accounts-payable"],
+priority:"medium"
+},
+tax_prepare:{
+name:"Tax Documentation Organizer",
+description:"Throughout the year, categorize transactions, collect 1099s and invoices, and generate a ready-to-file tax package at year-end.",
+tags:["tax","documentation","compliance"],
+priority:"low"
+}
+}
+},
+support:{
+label:"Customer Support",
+actions:[
+{id:"ticket_escalate",name:"Route and escalate support tickets"},
+{id:"auto_response",name:"Send auto-responses"},
+{id:"feedback_collect",name:"Collect customer feedback"},
+{id:"knowledge_base",name:"Update knowledge base"},
+{id:"satisfaction_survey",name:"Send satisfaction surveys"},
+{id:"sla_track",name:"Track SLA compliance"}
+],
+recommendations:{
+ticket_escalate:{
+name:"Intelligent Ticket Routing",
+description:"When a support request arrives via email, form, or chat, classify by topic, route to the right team or individual, and escalate if unanswered within SLA.",
+tags:["routing","escalation","helpdesk"],
+priority:"high"
+},
+auto_response:{
+name:"Instant Auto-Response with KB Links",
+description:"When a support ticket arrives, instantly reply with a helpful response and links to relevant knowledge base articles, before a human takes over.",
+tags:["auto-response","kb","deflection"],
+priority:"high"
+},
+satisfaction_survey:{
+name:"Post-Interaction Satisfaction Survey",
+description:"After a support ticket is resolved, automatically send a brief satisfaction survey via email or in-app, and log the response to your CRM.",
+tags:["feedback","satisfaction","nps"],
+priority:"medium"
+},
+knowledge_base:{
+name:"Knowledge Base Auto-Updater",
+description:"Monitor recurring support questions, flag new topics not covered in your KB, and draft articles for review and publication.",
+tags:["kb","documentation","support"],
+priority:"medium"
+},
+feedback_collect:{
+name:"Multi-Channel Feedback Collection",
+description:"Gather customer feedback from emails, support tickets, social media mentions, and review sites into a single dashboard for analysis.",
+tags:["feedback","multi-channel","monitoring"],
+priority:"medium"
+},
+sla_track:{
+name:"SLA Compliance Monitor",
+description:"Track response and resolution times across all support channels, alert on SLA breaches, and generate weekly compliance reports.",
+tags:["sla","compliance","monitoring"],
+priority:"low"
+}
+}
+},
+development:{
+label:"Development & IT",
+actions:[
+{id:"deploy_notify",name:"Notify on deploy/CI events"},
+{id:"bug_monitor",name:"Monitor bugs and errors"},
+{id:"pr_review",name:"Review and summarize PRs"},
+{id:"monitor_alert",name:"Set up system monitoring alerts"},
+{id:"docs_update",name:"Auto-update documentation"},
+{id:"db_backup",name:"Automate database backups"}
+],
+recommendations:{
+deploy_notify:{
+name:"CI/CD Deployment Notification",
+description:"When a deployment happens (GitHub Actions, Jenkins, etc.), post to Slack with details, create a release note, and update a status page.",
+tags:["deploy","ci-cd","slack"],
+priority:"high"
+},
+bug_monitor:{
+name:"Bug & Error Aggregation",
+description:"Monitor Sentry, error logs, and user reports, deduplicate, prioritize by severity, and create Jira/GitHub issues automatically.",
+tags:["bugs","monitoring","error-tracking"],
+priority:"high"
+},
+pr_review:{
+name:"PR Summary & Review Reminder",
+description:"When a PR is opened, summarize the changes, check for conflicts, assign reviewers, and post a reminder in Slack if no review occurs within 24 hours.",
+tags:["pr","code-review","github"],
+priority:"medium"
+},
+monitor_alert:{
+name:"System Health Alert Router",
+description:"Monitor uptime, response times, and error rates. Route alerts to Slack, email, or PagerDuty based on severity and time of day.",
+tags:["monitoring","alerts","uptime"],
+priority:"high"
+},
+docs_update:{
+name:"Auto-Documentation Updates",
+description:"When code changes touch documentation files, regenerate API docs, update README, or publish to a docs site automatically.",
+tags:["docs","automation","developer-experience"],
+priority:"medium"
+},
+db_backup:{
+name:"Automated Database Backup",
+description:"Schedule regular backups to cloud storage, verify integrity, keep retention policies, and alert on backup failures.",
+tags:["backup","database","reliability"],
+priority:"medium"
+}
+}
+}
+};
+
+let selectedCat=null, selectedActions=new Set();
+
+document.querySelectorAll('.cat-btn').forEach(btn=>{
+btn.addEventListener('click',()=>{
+document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('selected'));
+btn.classList.add('selected');
+selectedCat=btn.dataset.cat;
+document.getElementById('btn-next-1').classList.remove('hidden');
+});
+});
+
+function goStep2(){
+document.getElementById('step1').classList.add('hidden');
+document.getElementById('step2').classList.remove('hidden');
+const list=document.getElementById('actions-list');
+list.innerHTML='';
+WORKFLOWS[selectedCat].actions.forEach(a=>{
+const tag=document.createElement('button');
+tag.className='action-tag';
+tag.dataset.id=a.id;
+tag.textContent=a.name;
+tag.addEventListener('click',()=>{
+if(selectedActions.has(a.id)){selectedActions.delete(a.id);tag.classList.remove('selected');}
+else{selectedActions.add(a.id);tag.classList.add('selected');}
+if(selectedActions.size>0)document.getElementById('btn-next-2').classList.remove('hidden');
+else document.getElementById('btn-next-2').classList.add('hidden');
+});
+list.appendChild(tag);
+});
+}
+
+function goStep1(){
+document.getElementById('step2').classList.add('hidden');
+document.getElementById('step1').classList.remove('hidden');
+}
+
+function showResults(){
+document.getElementById('step2').classList.add('hidden');
+document.getElementById('results').classList.remove('hidden');
+const rc=document.getElementById('results-content');
+rc.innerHTML='';
+const wf=WORKFLOWS[selectedCat];
+const results=[];
+selectedActions.forEach(id=>{
+if(wf.recommendations[id])results.push(wf.recommendations[id]);
+});
+if(!results.length){
+rc.innerHTML='<div class="no-results"><p>No specific actions selected. Here are our top recommendations:</p></div>';
+['high','medium','low'].forEach(level=>{
+wf.actions.forEach(a=>{
+if(wf.recommendations[a.id]&&wf.recommendations[a.id].priority===level&&!results.find(r=>r.name===wf.recommendations[a.id].name))
+results.push(wf.recommendations[a.id]);
+});
+});
+if(!results.length){
+rc.innerHTML='<div class="no-results"><p>Select tasks to see recommendations. Each workflow is included in the Starter Pack.</p></div>';
+return;
+}
+}
+results.sort((a,b)=>({high:0,medium:1,low:2}[a.priority]-{high:0,medium:1,low:2}[b.priority]));
+results.forEach(r=>{
+const card=document.createElement('div');
+card.className='result-card';
+card.innerHTML=`<h3>${r.name}</h3><p class="description">${r.description}</p>
+<div class="workflow-tags">${r.tags.map(t=>`<span class="wf-tag">${t}</span>`).join('')}</div>
+<div style="margin-top:12px"><a class="cta-link" href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?utm_source=selector&utm_medium=experiment&utm_campaign=organic&utm_content=%24%7Br.name.replace%28%2F%5Cs+%2Fg%2C&client_reference_id=gn100_revenue_lab'-').toLowerCase()}" target="_blank" rel="noopener">Get this workflow in Starter Pack</a>
+<a class="free-cta" href="/products/n8n-starter-pack-complete-guide/" target="_blank" rel="noopener">Read the guide</a></div>`;
+rc.appendChild(card);
+});
+document.getElementById('results').scrollIntoView({behavior:'smooth'});
+}
+</script>
+<!-- verification marker: n8n-workflow-pattern-selector-exp-003-20260729 -->
+</body>
+</html>
