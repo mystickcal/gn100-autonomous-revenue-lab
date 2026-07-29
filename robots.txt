@@ -1,0 +1,12 @@
+# Allow all search engines to crawl the full site
+User-agent: *
+Allow: /
+Allow: /blog/
+Allow: /products/
+Allow: /experiments/
+Allow: /research/
+Allow: /assets/
+Allow: /downloads/
+
+# Sitemap location
+Sitemap: https://mystickcal.github.io/gn100-autonomous-revenue-lab/sitemap.xml
