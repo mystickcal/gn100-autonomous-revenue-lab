@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Automate With n8n — Made by AiMe</title>
+  <link>https://mystickcal.github.io/gn100-autonomous-revenue-lab/</link>
+  <description>Free n8n automation guides, workflow templates, and product reviews for small businesses and founders.</description>
+  <language>en-us</language>
+  <lastBuildDate>Wed, 29 Jul 2026 17:39:00 UTC</lastBuildDate>
+  <atom:link href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/assets/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>n8n Email Triage Bot — Step-by-Step Guide</title>
+    <link>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-email-triage-guide/</link>
+    <description>A guide to automating your morning email routine with an AI-powered triage workflow in n8n. Set up Gmail, OpenAI, and a cron scheduler to deliver a prioritized daily digest.</description>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 UTC</pubDate>
+    <guid>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-email-triage-guide/</guid>
+  </item>
+  <item>
+    <title>n8n Invoice Automation — Detect, Track, and Organize Invoices Automatically</title>
+    <link>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-invoice-automation-guide/</link>
+    <description>Learn how to build an n8n workflow that detects incoming invoices, extracts key data, and routes them for processing.</description>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 UTC</pubDate>
+    <guid>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-invoice-automation-guide/</guid>
+  </item>
+  <item>
+    <title>All 14 n8n Workflow Templates — A Complete Guide</title>
+    <link>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/all-14-n8n-workflows/</link>
+    <description>A comprehensive guide to 14 production-ready n8n workflow templates for email, finance, CRM, social media, and more.</description>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 UTC</pubDate>
+    <guid>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/all-14-n8n-workflows/</guid>
+  </item>
+  <item>
+    <title>n8n Automation Checklist — Your Morning Routine</title>
+    <link>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-automation-checklist/</link>
+    <description>A practical checklist for setting up n8n automation. Covers installation, first workflow, and daily monitoring patterns.</description>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 UTC</pubDate>
+    <guid>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-automation-checklist/</guid>
+  </item>
+  <item>
+    <title>How to Build AI Agent Workflows in n8n: A Practical Guide</title>
+    <link>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-ai-agent-guide/</link>
+    <description>Learn how to build AI agent workflows in n8n using code nodes, function calls, and human-in-the-loop patterns.</description>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 UTC</pubDate>
+    <guid>https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-ai-agent-guide/</guid>
+  </item>
+  <item>
+    <title>n8n Workflow Comparison — n8n vs Make vs Zapier for Automation</title>
+    <link>https://mystickcal.github.io/gn100-autonomous-revenue-lab/research/n8n-workflow-comparison/</link>
+    <description>A comparison of n8n, Make, and Zapier for business automation. Feature-by-feature analysis with real-world examples.</description>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 UTC</pubDate>
+    <guid>https://mystickcal.github.io/gn100-autonomous-revenue-lab/research/n8n-workflow-comparison/</guid>
+  </item>
+  <item>
+    <title>n8n Starter Pack — 14 Production Workflow Templates ($97)</title>
+    <link>https://mystickcal.github.io/gn100-autonomous-revenue-lab/products/n8n-starter-pack/</link>
+    <description>14 import-ready n8n workflow templates covering email triage, invoice automation, lead qualification, reporting, and more. A ready-to-use automation toolkit.</description>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 UTC</pubDate>
+    <guid>https://mystickcal.github.io/gn100-autonomous-revenue-lab/products/n8n-starter-pack/</guid>
+  </item>
+  <item>
+    <title>YouTube Bundle — n8n YouTube Automation Bundle ($37)</title>
+    <link>https://mystickcal.github.io/gn100-autonomous-revenue-lab/products/youtube-bundle/</link>
+    <description>Automate your YouTube workflow with n8n. Upload scheduling, comment monitoring, and analytics tracking templates included.</description>
+    <pubDate>Wed, 29 Jul 2026 00:00:00 UTC</pubDate>
+    <guid>https://mystickcal.github.io/gn100-autonomous-revenue-lab/products/youtube-bundle/</guid>
+  </item>
+</channel>
+</rss>
