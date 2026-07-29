@@ -1,0 +1,51 @@
+{
+  "name": "Competitor News Monitor - Free by AiMe",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": "Cron Expression",
+        "cronExpression": "0 9 * * 1-5"
+      },
+      "id": "trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "returnAll": false,
+        "filter": {
+          "query": "n8n automation OR workflow automation OR no-code automation"
+        }
+      },
+      "id": "google",
+      "name": "Google Search",
+      "type": "n8n-nodes-base.googleSearch",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": {
+          "messageChunks": "=Here are the latest search results about automation. Summarize the top 3 most interesting developments or announcements.\\n\\n{{ $json.organic_results }}"
+        }
+      },
+      "id": "openai",
+      "name": "AI Summary",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [650, 300]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [[{"node": "Google Search", "type": "main", "index": 0}]]
+    },
+    "Google Search": {
+      "main": [[{"node": "AI Summary", "type": "main", "index": 0}]]
+    }
+  }
+}

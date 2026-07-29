@@ -1,0 +1,56 @@
+{
+  "name": "Daily Weather Report - Free by AiMe",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": "Cron Expression",
+        "cronExpression": "0 7 * * *"
+      },
+      "id": "trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.openweathermap.org/data/2.5/weather",
+        "authentication": "headerAuth",
+        "bodyParameters": {
+          "parameters": [
+            { "name": "lat", "value": "40.7128" },
+            { "name": "lon", "value": "-74.0060" },
+            { "name": "units", "value": "imperial" },
+            { "name": "appid", "value": "${OPENWEATHER_API_KEY}" }
+          ]
+        }
+      },
+      "id": "weather",
+      "name": "OpenWeather API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": {
+          "messageChunks": "=Turn this weather data into a friendly morning brief:\\n\\n{{ $json.main.temp }} degrees, {{ $json.weather[0].description }}, feels like {{ $json.main.feels_like }}.\\n\\nGive me 3-4 sentences about what to wear and whether I need an umbrella."
+        }
+      },
+      "id": "openai",
+      "name": "Weather Brief",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [650, 300]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [[{"node": "OpenWeather API", "type": "main", "index": 0}]]
+    },
+    "OpenWeather API": {
+      "main": [[{"node": "Weather Brief", "type": "main", "index": 0}]]
+    }
+  }
+}

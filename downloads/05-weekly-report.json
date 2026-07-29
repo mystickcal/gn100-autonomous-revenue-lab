@@ -1,0 +1,34 @@
+{
+  "name": "Weekly Analytics Report - Free by AiMe",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": "Cron Expression",
+        "cronExpression": "0 10 * * 1"
+      },
+      "id": "trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": {
+          "messageChunks": "=Write a weekly analytics summary for a small business. Include sections for: traffic overview, top performing content, new subscribers, key metrics trend.\\n\\nUse a friendly, encouraging tone. Keep it under 300 words."
+        }
+      },
+      "id": "openai",
+      "name": "Write Summary",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [450, 300]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [[{"node": "Write Summary", "type": "main", "index": 0}]]
+    }
+  }
+}

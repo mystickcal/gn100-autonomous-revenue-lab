@@ -3,136 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>n8n Automation — Templates, Guides &amp; Workflows | MadeByAiMe</title>
-<meta name="description" content="Free n8n guides and 14 production-ready workflow templates. AI agent workflows, email triage, invoice automation, and more.">
-<meta name="keywords" content="n8n, automation, workflow templates, AI agent, email triage, invoice automation">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/">
-<meta property="og:title" content="n8n Automation — Templates, Guides &amp; Workflows">
-<meta property="og:description" content="Free n8n guides and production-ready workflow templates for small businesses and founders.">
+<title>5 Free n8n Workflows — Starter Pack by AiMe</title>
+<meta name="description" content="Download 5 free n8n workflow templates for email triage, weather reports, news monitoring, social posts, and weekly analytics.">
+<meta property="og:title" content="5 Free n8n Workflows — Starter Pack by AiMe">
+<meta property="og:description" content="Download 5 free n8n workflow templates. Import into n8n and start automating today.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mystickcal.github.io/gn100-autonomous-revenue-lab/">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/">
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "MadeByAiMe — n8n Automation Templates &amp; Guides",
-  "url": "https://mystickcal.github.io/gn100-autonomous-revenue-lab/",
-  "description": "Free n8n automation guides and 14 production-ready workflow templates."
-}
+{"@context":"https://schema.org","@type":"WebPage","name":"5 Free n8n Workflows","description":"Free n8n workflow templates for email triage, weather reports, and more.","url":"https://mystickcal.github.io/gn100-autonomous-revenue-lab/"}
 </script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;background:#fafafa}
-.container{max-width:760px;margin:0 auto;padding:0 1.5rem}
-header{text-align:center;padding:3rem 0 2rem;border-bottom:1px solid #e0e0e0;margin-bottom:2.5rem}
-header h1{font-size:2.2rem;color:#1a1a1a;margin-bottom:.5rem}
-header p{font-size:1.1rem;color:#666;max-width:540px;margin:0 auto}
+.container{max-width:720px;margin:0 auto;padding:0 1.5rem}
+header{text-align:center;padding:3rem 0 2rem;border-bottom:1px solid #e0e0e0;margin-bottom:2rem}
+header h1{font-size:2rem;color:#1a1a1a;margin-bottom:.5rem}
+header p{font-size:1.05rem;color:#666}
+.badge{display:inline-block;background:#e8f5e9;color:#2e7d32;padding:.25rem .75rem;border-radius:20px;font-size:.85rem;font-weight:600;margin-bottom:1rem}
 .section{margin:2.5rem 0}
-.section h2{font-size:1.4rem;margin-bottom:1rem;color:#1a1a1a;border-bottom:2px solid #4f46e5;display:inline-block;padding-bottom:.25rem}
-.guide-card{background:#fff;border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:.75rem;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:1rem;transition:box-shadow .2s}
-.guide-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.12)}
-.guide-card .icon{background:#4f46e5;color:#fff;width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
-.guide-card h3{font-size:1.05rem;margin-bottom:.25rem}
-.guide-card h3 a{color:#1a1a1a;text-decoration:none}
-.guide-card h3 a:hover{color:#4f46e5}
-.guide-card p{font-size:.9rem;color:#555}
-.product-card{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;border-radius:12px;padding:2rem;margin:1.5rem 0;box-shadow:0 4px 12px rgba(79,70,229,.3)}
-.product-card h2{color:#fff;border:none;font-size:1.5rem;margin-bottom:.5rem}
-.product-card p{color:#e0e0ff;margin-bottom:1rem}
-.product-card .price{font-size:2rem;font-weight:700}
-.product-card a{display:inline-block;background:#fff;color:#4f46e5;padding:.75rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;margin-top:.75rem}
-.product-card a:hover{background:#f0f0ff}
+.section h2{font-size:1.3rem;margin-bottom:1rem;color:#1a1a1a;padding-bottom:.5rem;border-bottom:2px solid #4f46e5}
+.workflow-item{background:#fff;border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:.75rem;box-shadow:0 1px 3px rgba(0,0,0,.06);border-left:4px solid #4f46e5}
+.workflow-item h3{font-size:1.05rem;color:#1a1a1a;margin-bottom:.35rem}
+.workflow-item p{font-size:.92rem;color:#555;margin-bottom:.5rem}
+.download-link{display:inline-block;color:#4f46e5;font-weight:600;font-size:.9rem;text-decoration:none}
+.download-link:hover{text-decoration:underline}
+.premium{background:linear-gradient(135deg,#f8f0ff,#fff0f5);border:2px solid #7c5cff;border-radius:12px;padding:2rem;margin:2.5rem 0;text-align:center}
+.premium h2{font-size:1.4rem;color:#1a1a1a;margin-bottom:.75rem}
+.premium p{color:#555;margin-bottom:1.25rem;font-size:.95rem}
+.cta-btn{display:inline-block;background:#4f46e5;color:#fff;padding:.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:1rem}
+.cta-btn:hover{background:#4338ca}
 footer{text-align:center;padding:2rem 0 3rem;color:#888;font-size:.85rem;border-top:1px solid #e0e0e0;margin-top:3rem}
 </style>
 </head>
 <body>
 <div class="container">
 <header>
-<h1>Automate With n8n</h1>
-<p>Free guides and production-ready workflow templates for small businesses and founders.</p>
+<span class="badge">5 Free Workflows</span>
+<h1>n8n Starter Pack</h1>
+<p>Import-ready workflow templates for your automation journey. No sign-up required.</p>
 </header>
 
 <div class="section">
-<h2>Free Guides</h2>
-
-<div class="guide-card">
-<div class="icon">email</div>
-<div>
-<h3><a href="/blog/n8n-email-triage-guide/">Email Triage Bot — Build an AI email classifier with n8n</a></h3>
-<p>Automate your inbox with an AI-powered email triage workflow. Classify, prioritize, and digest your email in one pass.</p>
-</div>
-</div>
-
-<div class="guide-card">
-<div class="icon">bill</div>
-<div>
-<h3><a href="/blog/n8n-invoice-automation-guide/">Invoice Automation — Detect and track invoices automatically</a></h3>
-<p>Automate invoice detection, extraction, and status tracking from your email or shared drive.</p>
-</div>
-</div>
-
-<div class="guide-card">
-<div class="icon">brain</div>
-<div>
-<h3><a href="/blog/n8n-ai-agent-guide/">How to Build AI Agent Workflows in n8n: A Practical Guide</a></h3>
-<p>Learn how to set up AI agents, error handling, and production patterns in n8n workflows.</p>
-</div>
-</div>
-
-<div class="guide-card">
-<div class="icon">list</div>
-<div>
-<h3><a href="/blog/all-14-n8n-workflows/">All 14 n8n Workflow Templates — Full Inventory</a></h3>
-<p>A complete walkthrough of every workflow in the Starter Pack, with setup instructions for each.</p>
-</div>
-</div>
-
-<div class="guide-card">
-<div class="icon">check</div>
-<div>
-<h3><a href="/blog/n8n-automation-checklist/">n8n Automation Checklist — Your Morning Routine</a></h3>
-<p>A simple, repeatable checklist for running your daily automation routine in n8n.</p>
-</div>
-</div>
+<h2>What You Get</h2>
+<p>Each workflow is an n8n JSON file. Import them into any n8n instance (self-hosted or cloud) and configure in minutes. All are simplified templates designed for learning and quick setup.</p>
 </div>
 
 <div class="section">
-<h2>Research &amp; Comparison</h2>
+<h2>5 Free Workflows</h2>
 
-<div class="guide-card">
-<div class="icon">chart</div>
-<div>
-<h3><a href="/research/n8n-workflow-comparison/">n8n Workflow Comparison — Which Templates Fit Your Use Case?</a></h3>
-<p>Side-by-side comparison of n8n workflows by function, complexity, and setup time.</p>
+<div class="workflow-item">
+<h3>01 — Daily Email Digest</h3>
+<p>Schedules daily, reads Gmail, summarizes unread emails with OpenAI, sends a priority digest to Telegram or Slack.</p>
+<a class="download-link" href="/downloads/01-daily-email-digest.json">Download workflow file &rarr;</a>
+</div>
+
+<div class="workflow-item">
+<h3>02 — Daily Weather Report</h3>
+<p>Fetches daily weather data from OpenWeather API, uses OpenAI to generate a friendly morning brief with dress recommendations.</p>
+<a class="download-link" href="/downloads/02-weather-report.json">Download workflow file &rarr;</a>
+</div>
+
+<div class="workflow-item">
+<h3>03 — Competitor News Monitor</h3>
+<p>Runs weekday mornings, searches for automation news via Google, summarizes the top developments with AI.</p>
+<a class="download-link" href="/downloads/03-competitor-monitor.json">Download workflow file &rarr;</a>
+</div>
+
+<div class="workflow-item">
+<h3>04 — Social Post Ideas Generator</h3>
+<p>Generates weekly social media content ideas for n8n consultants and automation professionals. Mix of tips, behind-the-scenes, and engagement posts.</p>
+<a class="download-link" href="/downloads/04-social-post-ideas.json">Download workflow file &rarr;</a>
+</div>
+
+<div class="workflow-item">
+<h3>05 — Weekly Analytics Report</h3>
+<p>Writes a friendly weekly analytics summary for small businesses. Covers traffic, top content, and key metrics.</p>
+<a class="download-link" href="/downloads/05-weekly-report.json">Download workflow file &rarr;</a>
 </div>
 </div>
+
+<div class="premium">
+<h2>Want 14 Production-Ready Workflows?</h2>
+<p>The n8n Starter Pack includes 14 complete workflows covering email triage, invoice automation, lead tracking, reporting, and more. Each one is import-ready with detailed setup guides.</p>
+<a class="cta-btn" href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05">Get the Full Starter Pack — $97 &rarr;</a>
+<p style="font-size:.82rem;color:#999;margin-top:.75rem">30-day money-back guarantee</p>
 </div>
 
 <div class="section">
-<h2>Products</h2>
-
-<div class="product-card">
-<h2>n8n Starter Pack</h2>
-<p>14 production-ready n8n workflow templates covering email, invoices, CRM, reporting, and more. Import and run in minutes.</p>
-<p class="price">$97</p>
-<a href="/products/n8n-starter-pack/">View Details &amp; Buy</a>
+<h2>Getting Started</h2>
+<ol style="margin-left:1.5rem;color:#555">
+<li style="margin-bottom:.75rem"><strong>Install n8n:</strong> <code>docker run -p 5678:5678 n8nio/n8n</code> or sign up for n8n Cloud</li>
+<li style="margin-bottom:.75rem"><strong>Import a workflow:</strong> Click "+ New" &rarr; menu (three dots) &rarr; "Import from file" &rarr; select a JSON file</li>
+<li style="margin-bottom:.75rem"><strong>Set up credentials:</strong> Add an OpenAI API key in n8n settings, configure any service-specific credentials shown in the workflow</li>
+<li style="margin-bottom:.75rem"><strong>Activate:</strong> Click "Activate" to start the workflow running on its schedule</li>
+</ol>
 </div>
 
-<div class="guide-card">
-<div class="icon">video</div>
-<div>
-<h3><a href="/products/youtube-bundle/">YouTube Automation Bundle</a></h3>
-<p>Automated workflows for YouTube content creation and channel management.</p>
-<p><strong>$37</strong></p>
-</div>
-</div>
+<div class="section">
+<h2>What n8n Is</h2>
+<p>n8n is an open-source workflow automation tool. Unlike Zapier or Make, n8n can be self-hosted for free, giving you full control over your data and workflows. Thousands of nodes connect to virtually any service.</p>
+<p>The 5 free workflows above demonstrate core n8n patterns: scheduling, API calls, AI processing, and delivery. Each one is a building block for more complex automations.</p>
 </div>
 
+</div>
 <footer>
-MadeByAiMe — Autonomous revenue experiment. All products include a 30-day money-back guarantee.
-<!-- verification marker: updated homepage all links 2026-07-29 -->
+Made by AiMe &mdash; Free n8n automation templates and workflows
 </footer>
+<!-- verification marker: free-n8n-starter-pack-20260729 -->
 </div>
 </body>
 </html>

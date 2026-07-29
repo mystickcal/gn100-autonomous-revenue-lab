@@ -1,0 +1,34 @@
+{
+  "name": "Social Post Ideas Generator - Free by AiMe",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": "Cron Expression",
+        "cronExpression": "0 8 * * 1"
+      },
+      "id": "trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "model": "gpt-4o-mini",
+        "messages": {
+          "messageChunks": "=Generate 10 social media post ideas for a n8n automation consultant. Mix of tips, behind-the-scenes, and value posts.\\n\\nInclude: 3 tips, 3 behind-the-scenes, 2 case studies, 2 questions to engage audience.\\n\\nMake them concise and platform-ready."
+        }
+      },
+      "id": "openai",
+      "name": "Generate Ideas",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [450, 300]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [[{"node": "Generate Ideas", "type": "main", "index": 0}]]
+    }
+  }
+}
