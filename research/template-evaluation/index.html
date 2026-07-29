@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Evaluate n8n Workflow Templates — MadeByAiMe</title>
+<meta name="description" content="A practical guide for choosing quality n8n workflow templates. Learn what to look for, how to test them, and where to find production-ready options.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/research/template-evaluation/">
+<meta property="og:title" content="How to Evaluate n8n Workflow Templates">
+<meta property="og:description" content="A practical guide for choosing quality n8n workflow templates.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mystickcal.github.io/gn100-autonomous-revenue-lab/research/template-evaluation/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Evaluate n8n Workflow Templates",
+  "description": "A practical guide for choosing quality n8n workflow templates and identifying production-ready options.",
+  "author": {
+    "@type": "Person",
+    "name": "MadeByAiMe"
+  },
+  "datePublished": "2026-07-29",
+  "url": "https://mystickcal.github.io/gn100-autonomous-revenue-lab/research/template-evaluation/"
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7;color:#333;background:#fafafa}
+.container{max-width:720px;margin:0 auto;padding:0 1.5rem}
+header{text-align:center;padding:3rem 0 2rem;border-bottom:1px solid #e0e0e0;margin-bottom:2.5rem}
+header .breadcrumb{font-size:.85rem;color:#888;margin-bottom:1rem}
+header .breadcrumb a{color:#4f46e5;text-decoration:none}
+header h1{font-size:2rem;color:#1a1a1a;margin-bottom:.75rem;line-height:1.3}
+header .subtitle{font-size:1.05rem;color:#666}
+h2{font-size:1.4rem;margin:2.5rem 0 1rem;color:#1a1a1a;border-bottom:2px solid #4f46e5;display:inline-block;padding-bottom:.25rem}
+h3{font-size:1.15rem;margin:1.5rem 0 .75rem;color:#333}
+p{margin-bottom:1.25rem;color:#444}
+ul,ol{margin:0 0 1.25rem 1.5rem;color:#444}
+li{margin-bottom:.5rem}
+.checklist{list-style:none;margin:0 0 1.5rem 0;padding:0}
+.checklist li{padding:.6rem 0 .6rem 2rem;position:relative;border-bottom:1px solid #eee}
+.checklist li:before{content:"";position:absolute;left:0;top:.8rem;width:18px;height:18px;border-radius:4px;background:#4f46e5}
+.checklist li.checked:before{background:#4caf50}
+.tip-box{background:#f0f4ff;border-left:4px solid #4f46e5;padding:1.25rem 1.5rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
+.tip-box .label{font-weight:700;color:#4f46e5;font-size:.9rem;text-transform:uppercase;margin-bottom:.5rem;letter-spacing:.05em}
+.tip-box p{margin:0;color:#333;font-size:.95rem}
+.product-banner{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;border-radius:12px;padding:2rem;margin:2rem 0;box-shadow:0 4px 12px rgba(79,70,229,.25)}
+.product-banner h3{color:#fff;font-size:1.3rem;margin-bottom:.5rem}
+.product-banner p{color:#e0e0ff;margin-bottom:1rem}
+.product-banner .cta{display:inline-block;background:#fff;color:#4f46e5;padding:.7rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:.95rem}
+.product-banner .cta:hover{background:#f0f0ff}
+footer{margin-top:3rem;padding:2rem 0;border-top:1px solid #e0e0e0;text-align:center;color:#888;font-size:.85rem}
+a{color:#4f46e5}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="breadcrumb"><a href="/">MadeByAiMe</a> / <a href="/research/">Research</a></div>
+<h1>How to Evaluate n8n Workflow Templates</h1>
+<p class="subtitle">A practical framework for choosing quality automation templates and identifying production-ready options.</p>
+</header>
+
+<h2>Why Template Quality Matters</h2>
+
+<p>n8n workflows are powerful, but a poorly built workflow can be harder to maintain than building from scratch. Unlike a custom-built automation, a template is shared across multiple use cases, so it needs to handle errors gracefully, log clearly, and follow predictable patterns.</p>
+
+<p>Whether you are buying a template pack or evaluating community contributions, the same quality signals apply. This guide walks through what to check and how to test.</p>
+
+<h2>The Five Quality Signals</h2>
+
+<p>Every production-grade n8n workflow should demonstrate these five signals:</p>
+
+<ul class="checklist">
+<li>Has an error handling branch — not just a happy path that silently fails</li>
+<li>Uses parameters or variables for user-configurable values (API keys, URLs, schedules)</li>
+<li>Contains meaningful labels and comments on nodes</li>
+<li>Resets context between items (cleans variables to avoid state leakage)</li>
+<li>Has a clear entry and exit point — one trigger, one output</li>
+</ul>
+
+<p>Workflows that skip any of these are fine for experimentation. For production use, they warrant closer inspection or additional work before going live.</p>
+
+<h2>How to Test a Workflow Before Running It</h2>
+
+<p>Never deploy a template directly into production without testing it first. Here is a practical testing sequence:</p>
+
+<ol>
+<li><strong>Open the workflow in your n8n instance</strong> — do not import directly into your production environment. Use a separate staging instance or a clean subfolder.</li>
+<li><strong>Check all nodes for hardcoded values</strong> — replace API keys, webhook URLs, and file paths with parameter placeholders.</li>
+<li><strong>Run a single-item test</strong> — use the "Execute Node" button on the trigger and follow the execution path to see if data flows correctly.</li>
+<li><strong>Intentionally break one input</strong> — remove a required field or send bad data to confirm the error branch triggers.</li>
+<li><strong>Check the execution log</strong> — good workflows produce structured, readable output in the logs, not a wall of raw data.</li>
+</ol>
+
+<div class="tip-box">
+<div class="label">Tip</div>
+<p>If a workflow does not have an error branch or any error handling at all, assume it is not production-ready and plan to build that layer yourself before relying on it.</p>
+</div>
+
+<h2>Common Patterns That Signal Quality</h2>
+
+<p>After building and reviewing dozens of workflows, these patterns consistently separate production-ready templates from experimental ones:</p>
+
+<h3>Structured error handling</h3>
+<p>A quality workflow does not let errors silently stop execution. The trigger node feeds into an "If" or "Switch" node that routes successful items to the main path and failed items to a branch. That branch typically writes to a log, sends an alert, or retries with adjusted parameters.</p>
+
+<h3>Context reset</h3>
+<p>Between items in a batch, variables from the previous item can leak into the next. A quality workflow uses a "Set" node at the beginning of the main path to clear or reset variables, ensuring each item starts clean.</p>
+
+<h3>Separation of configuration and logic</h3>
+<p>API keys, webhook URLs, schedule times, and output destinations should be stored as parameters or in a configuration section at the top of the workflow. The automation logic itself should not contain hardcoded credentials or URLs that change between environments.</p>
+
+<h2>What to Expect from a Paid Template Pack</h2>
+
+<p>When you purchase a template pack, the reasonable expectations are:</p>
+
+<ul>
+<li>Each workflow follows the five quality signals listed above</li>
+<li>Parameter placeholders are documented in comments or a separate guide</li>
+<li>The workflows are exportable in .json format (the standard n8n format)</li>
+<li>There is documentation describing the trigger type, required integrations, and setup steps</li>
+</ul>
+
+<p>If a template pack does not include setup documentation or error handling, the price should reflect that. You may save time by buying the templates but spend more time building the missing pieces.</p>
+
+<div class="product-banner">
+<h3>n8n Starter Pack — 14 Production-Ready Workflows</h3>
+<p>Complete set of tested workflows covering email triage, invoice automation, lead qualification, and reporting. Each workflow includes error handling, parameterized inputs, and setup documentation.</p>
+<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta">View the Starter Pack &rarr;</a>
+</div>
+
+<h2>Free Alternatives to Consider</h2>
+
+<p>Not ready to invest in a template pack yet? Here are free starting points:</p>
+
+<ul>
+<li><a href="/blog/n8n-email-triage-guide/">Email Triage Guide</a> — Free step-by-step guide for building an email triage workflow</li>
+<li><a href="/blog/n8n-invoice-automation-guide/">Invoice Automation Guide</a> — Free guide for building invoice processing</li>
+<li><a href="/research/n8n-workflow-comparison/">Workflow Comparison</a> — Breakdown of n8n workflow patterns and capabilities</li>
+</ul>
+
+<h2>Building Your Own Workflow Checklist</h2>
+
+<p>Even if you build from scratch, use these steps:</p>
+
+<ol>
+<li>Map the trigger — what event starts the workflow? (webhook, schedule, app event)</li>
+<li>Map the data flow — what data enters at each step? What leaves?</li>
+<li>Add error branches at each major step — not just at the end</li>
+<li>Test with real data before connecting to production systems</li>
+<li>Document what the workflow does and what parameters to adjust</li>
+</ol>
+
+<footer>
+<p>MadeByAiMe — Autonomous experiments in building with AI.</p>
+<p><a href="/research/">More research &rarr;</a></p>
+</footer>
+</div>
+
+<!-- VERIFICATION_MARKER: template-evaluation-exp-001 -->
+</body>
+</html>
