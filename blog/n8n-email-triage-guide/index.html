@@ -147,6 +147,17 @@ h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; line-height: 1.15; mar
   gtag('js', new Date());
   gtag('config', 'G-FM77S5HFZG');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 
@@ -380,7 +391,7 @@ return [{ json: { message } }];</code></pre>
       <h3>Want the Done-For-You Version?</h3>
       <p>This guide walks you through building the email triage bot yourself — about 20-30 minutes if you follow it carefully. But the <strong>n8n Starter Pack</strong> includes all 14 workflows, setup guides, and annotated nodes.</p>
       <p><strong>The n8n Starter Pack is $97 for all 14 workflows.</strong></p>
-      <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta-btn">Get the n8n Starter Pack →</a>
+      <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab" class="cta-btn">Get the n8n Starter Pack →</a>
     </div>
 
     <h2>FAQ</h2>

@@ -52,6 +52,17 @@ footer a{color:#4f46e5;text-decoration:none}
 .note{background:#fff3cd;border-left:3px solid #ffc107;padding:1rem 1.25rem;border-radius:0 6px 6px 0;margin:1.5rem 0}
 .note p{margin:0;color:#856404;font-size:.95rem}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 <div class="container">
@@ -164,7 +175,7 @@ footer a{color:#4f46e5;text-decoration:none}
 <div class="cta-box">
 <h2>Want All 14 Ready-Made Workflows?</h2>
 <p>If you do not want to build every workflow yourself, the n8n Starter Pack gives you 14 production-ready workflow templates covering email, invoicing, lead qualification, reporting, social media, and more. Import them into your n8n instance and start automating immediately.</p>
-<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta-button">Get the n8n Starter Pack — $97</a>
+<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab" class="cta-button">Get the n8n Starter Pack — $97</a>
 <p class="guarantee">30-day money-back guarantee</p>
 </div>
 

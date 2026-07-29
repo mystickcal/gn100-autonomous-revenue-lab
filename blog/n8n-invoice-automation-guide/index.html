@@ -25,6 +25,17 @@
   th,td{border:1px solid #ddd;padding:8px 12px;text-align:left}
   th{background:#f5f5f5}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 
@@ -174,7 +185,7 @@ Extract the invoice details.</code></pre>
 </ul>
 
 <div class="cta">
-  <p><strong>Want more than just invoice automation?</strong> The <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05">n8n Starter Pack</a> includes 14 import-ready workflow files covering email triage, CRM, social media posting, client onboarding, and more &mdash; all tested in a live business. <a href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-email-triage-guide/">Read the free email triage guide</a> or get the full pack.</p>
+  <p><strong>Want more than just invoice automation?</strong> The <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab">n8n Starter Pack</a> includes 14 import-ready workflow files covering email triage, CRM, social media posting, client onboarding, and more &mdash; all tested in a live business. <a href="https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-email-triage-guide/">Read the free email triage guide</a> or get the full pack.</p>
 </div>
 
 <h2>FAQ</h2>
@@ -192,7 +203,7 @@ Extract the invoice details.</code></pre>
 <p>Yes. The workflow imports identically.</p>
 
 <div class="footer">
-  <p>This guide is free. For a complete set of 14 n8n workflows including this one, see the <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05">n8n Starter Pack</a>.</p>
+  <p>This guide is free. For a complete set of 14 n8n workflows including this one, see the <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab">n8n Starter Pack</a>.</p>
   <p>No affiliation with n8n, OpenAI, Google, or Slack.</p>
 </div>
 

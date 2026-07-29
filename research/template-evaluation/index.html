@@ -54,6 +54,17 @@ li{margin-bottom:.5rem}
 footer{margin-top:3rem;padding:2rem 0;border-top:1px solid #e0e0e0;text-align:center;color:#888;font-size:.85rem}
 a{color:#4f46e5}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 <div class="container">
@@ -129,7 +140,7 @@ a{color:#4f46e5}
 <div class="product-banner">
 <h3>n8n Starter Pack — 14 Production-Ready Workflows</h3>
 <p>Complete set of tested workflows covering email triage, invoice automation, lead qualification, and reporting. Each workflow includes error handling, parameterized inputs, and setup documentation.</p>
-<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta">View the Starter Pack &rarr;</a>
+<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab" class="cta">View the Starter Pack &rarr;</a>
 </div>
 
 <h2>Free Alternatives to Consider</h2>

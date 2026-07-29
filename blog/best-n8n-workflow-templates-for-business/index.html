@@ -49,6 +49,17 @@ header h1{font-size:1.8rem;color:#1a1a1a;margin-bottom:.5rem}
 footer{text-align:center;padding:2rem 0 3rem;color:#888;font-size:.85rem;border-top:1px solid #e0e0e0;margin-top:3rem}
 footer a{color:#4f46e5;text-decoration:none}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 <div class="container">
@@ -152,13 +163,13 @@ footer a{color:#4f46e5;text-decoration:none}
 <div class="section">
 <h2>Build or Buy the Full Pack</h2>
 <p>You can build each of these workflows yourself in n8n using the visual editor. Some are straightforward (email triage, calendar sync), while others require more setup (lead qualification, data enrichment).</p>
-<p>If you want all 14 workflows in a single package, the <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05">n8n Starter Pack</a> gives you every workflow listed above in one purchase. Import them all in minutes and start automating immediately.</p>
+<p>If you want all 14 workflows in a single package, the <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab">n8n Starter Pack</a> gives you every workflow listed above in one purchase. Import them all in minutes and start automating immediately.</p>
 </div>
 
 <div class="cta-box">
 <h2>Get All 14 Workflows</h2>
 <p>The complete Starter Pack with all 14 workflow templates, ready to import into your n8n instance.</p>
-<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta-button">Buy the Starter Pack - $97</a>
+<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab" class="cta-button">Buy the Starter Pack - $97</a>
 <p class="guarantee">30-day money-back guarantee</p>
 </div>
 

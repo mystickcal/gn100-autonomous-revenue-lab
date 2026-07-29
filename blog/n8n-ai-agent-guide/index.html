@@ -72,6 +72,17 @@ footer a:hover{color:#f0f0f8}
   "mainEntityOfPage": "https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-ai-agent-guide/"
 }
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 
@@ -248,7 +259,7 @@ footer a:hover{color:#f0f0f8}
   <div class="cta-section">
     <h3>Production-Tested n8n Workflows</h3>
     <p>The n8n Starter Pack includes 14 import-ready workflow templates covering email triage, invoice automation, lead tracking, reporting, and more. Built for real use, tested in production.</p>
-    <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta-btn" target="_blank" rel="noopener">View n8n Starter Pack</a>
+    <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab" class="cta-btn" target="_blank" rel="noopener">View n8n Starter Pack</a>
   </div>
 
   <div class="related-section">

@@ -23,7 +23,7 @@
     "price": "97.00",
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock",
-    "url": "https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05"
+    "url": "https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab"
   },
   "category": "Digital Product - Software Templates"
 }
@@ -60,6 +60,17 @@ header .tagline{font-size:1.1rem;color:#666}
 .related a:hover{text-decoration:underline}
 footer{text-align:center;padding:2rem 0 3rem;color:#888;font-size:.85rem;border-top:1px solid #e0e0e0;margin-top:3rem}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 <div class="container">
@@ -71,7 +82,7 @@ footer{text-align:center;padding:2rem 0 3rem;color:#888;font-size:.85rem;border-
 
 <div class="price-section">
 <p class="price"><span class="currency">$</span>97</p>
-<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta-button">Buy the Starter Pack</a>
+<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab" class="cta-button">Buy the Starter Pack</a>
 <p class="guarantee">30-day money-back guarantee</p>
 </div>
 

@@ -36,6 +36,17 @@ header p{font-size:1.05rem;color:#666}
 .cta-btn:hover{background:#4338ca}
 footer{text-align:center;padding:2rem 0 3rem;color:#888;font-size:.85rem;border-top:1px solid #e0e0e0;margin-top:3rem}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 <div class="container">
@@ -87,7 +98,7 @@ footer{text-align:center;padding:2rem 0 3rem;color:#888;font-size:.85rem;border-
 <div class="premium">
 <h2>Want 14 Production-Ready Workflows?</h2>
 <p>The n8n Starter Pack includes 14 complete workflows covering email triage, invoice automation, lead tracking, reporting, and more. Each one is import-ready with detailed setup guides.</p>
-<a class="cta-btn" href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05">Get the Full Starter Pack — $97 &rarr;</a>
+<a class="cta-btn" href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab">Get the Full Starter Pack — $97 &rarr;</a>
 <p style="font-size:.82rem;color:#999;margin-top:.75rem">30-day money-back guarantee</p>
 </div>
 

@@ -42,6 +42,17 @@ footer{text-align:center;padding:2rem 0 3rem;color:#888;font-size:.85rem;border-
 footer a{color:#4f46e5;text-decoration:none}
 @media(max-width:600px){.workflows-grid{grid-template-columns:1fr}}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 <div class="container">
@@ -135,7 +146,7 @@ footer a{color:#4f46e5;text-decoration:none}
 <div class="workflow-tag">Approval Workflows</div>
 </div>
 <p><strong>$97 one-time</strong> — each template is an n8n JSON file you import and configure</p>
-<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta-btn">Get the n8n Starter Pack &rarr;</a>
+<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab" class="cta-btn">Get the n8n Starter Pack &rarr;</a>
 <p class="guarantee">30-day money-back guarantee</p>
 </div>
 

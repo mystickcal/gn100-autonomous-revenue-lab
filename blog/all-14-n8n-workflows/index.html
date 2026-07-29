@@ -50,6 +50,17 @@ nav.toc li{margin-bottom:.35rem}
 nav.toc a{color:#4f46e5;text-decoration:none}
 nav.toc a:hover{text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 <div class="container">
@@ -243,7 +254,7 @@ nav.toc a:hover{text-decoration:underline}
 <h3>The Full Starter Pack</h3>
 <p>All 14 workflows as import-ready n8n JSON files, each with setup guide and annotated nodes.</p>
 <p><strong>$97 one-time</strong> — 30-day money-back guarantee</p>
-<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta-btn">Get the n8n Starter Pack &rarr;</a>
+<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab" class="cta-btn">Get the n8n Starter Pack &rarr;</a>
 <p style="margin-top:1rem;font-size:.9rem;color:#666">or view the product page with full details and workflow inventory</p>
 <a href="/products/n8n-starter-pack/" style="color:#4f46e5">Product page &rarr;</a>
 </div>

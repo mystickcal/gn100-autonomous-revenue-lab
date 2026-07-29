@@ -52,6 +52,17 @@ table{width:100%;border-collapse:collapse;margin:1rem 0}
 th,td{padding:.75rem 1rem;border:1px solid #e0e0e0;text-align:left}
 th{background:#f5f5f5;font-weight:600}
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FM77S5HFZG" data-gn100-measurement="G-FM77S5HFZG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-FM77S5HFZG');
+document.addEventListener('click',function(event){
+  var link=event.target.closest('a[href^="https://buy.stripe.com/"]');
+  if(link) gtag('event','gn100_offer_click',{link_url:link.href});
+});
+</script>
 </head>
 <body>
 <div class="container">
@@ -156,13 +167,13 @@ th{background:#f5f5f5;font-weight:600}
 <div class="section">
 <h2>Next Steps</h2>
 <p>Webhooks are the connective tissue of modern automation. Once you understand how to receive and process webhook data, you can build virtually any integration.</p>
-<p>If you want ready-made workflows that use webhooks as their foundation, the <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05">n8n Starter Pack</a> includes 14 workflow templates, several of which use webhooks to receive payment data, form submissions, and event notifications. Each workflow is import-ready -- just paste it into your n8n instance and configure your credentials.</p>
+<p>If you want ready-made workflows that use webhooks as their foundation, the <a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab">n8n Starter Pack</a> includes 14 workflow templates, several of which use webhooks to receive payment data, form submissions, and event notifications. Each workflow is import-ready -- just paste it into your n8n instance and configure your credentials.</p>
 </div>
 
 <div class="cta-box">
 <h2>Get 14 Ready-Made Workflows</h2>
 <p>Stop building from scratch. Import the n8n Starter Pack and start automating in minutes.</p>
-<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta-button">Buy the Starter Pack -- $97</a>
+<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05?client_reference_id=gn100_revenue_lab" class="cta-button">Buy the Starter Pack -- $97</a>
 <p class="guarantee">30-day money-back guarantee</p>
 </div>
 
