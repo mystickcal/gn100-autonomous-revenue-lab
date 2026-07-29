@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>n8n Automation Checklist — The Complete Starter List for Building Reliable Workflows</title>
+<meta name="description" content="A practical checklist for getting started with n8n automation. Covers setup, common patterns, error handling, deployment, and the next steps for production-grade workflows.">
+<meta property="og:title" content="n8n Automation Checklist">
+<meta property="og:description" content="The complete checklist for building reliable n8n workflows. Free, practical, no fluff.">
+<meta property="og:type" content="article">
+<meta name="robots" content="index, follow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:#333;background:#fafafa}
+.container{max-width:720px;margin:0 auto;padding:2rem 1.5rem}
+header{padding:3rem 0 2rem;border-bottom:1px solid #e0e0e0;margin-bottom:2rem}
+header h1{font-size:2.2rem;font-weight:800;color:#1a1a1a;margin-bottom:.5rem;line-height:1.2}
+header .subtitle{font-size:1.05rem;color:#666;margin-bottom:1rem}
+.badge{display:inline-block;background:#e8f5e9;color:#2e7d32;padding:.25rem .75rem;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:1rem}
+h2{font-size:1.35rem;font-weight:700;color:#1a1a1a;margin:2.5rem 0 1rem;padding-top:1rem;border-top:1px solid #eee}
+h3{font-size:1.1rem;font-weight:600;color:#444;margin:1.5rem 0 .75rem}
+p{margin-bottom:1rem;color:#444}
+ul{margin:.5rem 0 1.5rem 0;padding-left:1.5rem}
+li{margin-bottom:.5rem;color:#444}
+li strong{color:#333}
+.checklist{margin:1rem 0}
+.checklist-item{display:flex;align-items:flex-start;gap:.75rem;padding:.65rem 0;border-bottom:1px solid #f0f0f0}
+.checklist-item:last-child{border-bottom:none}
+.check{width:22px;height:22px;min-width:22px;border:2px solid #ccc;border-radius:4px;margin-top:2px}
+.check-item-text{flex:1}
+.check-item-text strong{display:block;color:#333;font-size:.95rem}
+.check-item-text span{color:#666;font-size:.9rem}
+.cta-section{background:linear-gradient(135deg,#f8f0ff,#fff0f5);border:2px solid #7c5cff;border-radius:16px;padding:2.5rem;margin:3rem 0;text-align:center}
+.cta-section h2{font-size:1.5rem;border:none;padding:0;margin:0 0 .5rem}
+.cta-section p{color:#555;margin-bottom:1.5rem}
+.cta-btn{display:inline-block;background:#4f46e5;color:#fff;padding:1rem 2.5rem;border-radius:8px;text-decoration:none;font-size:1.1rem;font-weight:600;margin:1rem 0}
+.cta-btn:hover{background:#4338ca}
+.guarantee{font-size:.85rem;color:#888;margin-top:.75rem}
+.related{background:#fff;border-radius:12px;padding:1.5rem;margin-top:2rem;border:1px solid #e0e0e0}
+.related h3{font-size:1.1rem;margin-bottom:.5rem;color:#1a1a1a}
+.related a{color:#4f46e5;text-decoration:none}
+.related a:hover{text-decoration:underline}
+footer{margin-top:4rem;padding-top:2rem;border-top:1px solid #e0e0e0;color:#888;font-size:.85rem;text-align:center}
+.toc{background:#f8f8f8;border-radius:12px;padding:1.5rem 2rem;margin:2rem 0}
+.toc h3{font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:#666;margin-bottom:.75rem}
+.toc ol{margin-left:1.5rem}
+.toc li{margin-bottom:.4rem}
+.toc a{color:#4f46e5;text-decoration:none;font-size:.95rem}
+@media(max-width:600px){header h1{font-size:1.6rem}.container{padding:1.5rem 1rem}.cta-section{padding:1.5rem}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<span class="badge">Free Resource</span>
+<h1>The n8n Automation Checklist</h1>
+<p class="subtitle">Everything you need to set up n8n, build your first workflow, and move it to production. Bookmark this page and work through it step by step.</p>
+</header>
+
+<div class="toc">
+<h3>What's Inside</h3>
+<ol>
+<li>Setting up n8n</li>
+<li>Your first workflow</li>
+<li>Core automation patterns</li>
+<li>Error handling and reliability</li>
+<li>Production deployment</li>
+<li>Next steps</li>
+</ol>
+</div>
+
+<h2>1. Setting Up n8n</h2>
+<div class="checklist">
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Choose your deployment path</strong><span>Self-hosted (free, full control) or n8n Cloud (~$24/mo, managed). Self-hosted is the default for most users who want to maximize value.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Spin up n8n with Docker</strong><span>docker run -it --rm --name n8n -p 5678:5678 -v ~/.n8n:/home/node/.n8n n8nio/n8n</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Visit http://localhost:5678</strong><span>Create your admin account. You'll land on the workflow editor.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Install the OpenAI node</strong><span>Search for OpenAI in the node palette. Connect your API key. This unlocks AI classification, text extraction, and summarization.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Connect your first app</strong><span>Gmail, Slack, Telegram, Google Sheets, Stripe -- whichever is most valuable to your workflow. Use OAuth where available.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Set up credentials and test each connection</strong><span>Every workflow starts and ends with connections. Get them working before building anything complex.</span></div></div>
+</div>
+
+<h2>2. Building Your First Workflow</h2>
+<div class="checklist">
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Start with a trigger node</strong><span>Schedule (Cron), Webhook, Gmail (new email), or a manual button. Pick the one that matches your automation goal.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Add a Set node to define the structure</strong><span>Even simple workflows benefit from explicitly shaping the data before it flows through. Define what your output should look like.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Build the transformation chain</strong><span>HTTP Request, Code, Split In Batches, If -- these are the building blocks of every workflow. Chain them in the order that makes sense for your data.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Add an output action</strong><span>Send a Slack message, write to Google Sheets, post to Telegram, or create a Stripe charge. Your workflow is only useful if something happens at the end.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Test every step before activating</strong><span>Use the Execute Node button to run each node individually. Check the output before moving to the next node.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Activate and monitor for one day</strong><span>Let it run. Watch the execution log. See what actually works and what needs adjustment.</span></div></div>
+</div>
+
+<h2>3. Core Automation Patterns</h2>
+<p>These patterns cover most of what people use n8n for. If you master these, you can build most workflows:</p>
+
+<h3>Pattern A: Inbox Intelligence</h3>
+<div class="checklist">
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Gmail trigger to AI classification to message sent</strong><span>Scan emails, classify with OpenAI, send digest to Slack/Telegram. This is the single most popular n8n workflow people build.</span></div></div>
+</div>
+
+<h3>Pattern B: Document Processing</h3>
+<div class="checklist">
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Email attachment to OpenAI extraction to database/Sheet</strong><span>Invoices, receipts, contracts -- use AI to pull structured data from unstructured documents.</span></div></div>
+</div>
+
+<h3>Pattern C: Content Repurposing</h3>
+<div class="checklist">
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>YouTube/RSS to OpenAI summarization to social posts</strong><span>Turn one piece of content into multiple formats across platforms automatically.</span></div></div>
+</div>
+
+<h3>Pattern D: Lead Capture and Routing</h3>
+<div class="checklist">
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Webhook/form to data enrichment to CRM/Sheet/Slack alert</strong><span>Capture leads from any source, enrich them, and route to your pipeline instantly.</span></div></div>
+</div>
+
+<h3>Pattern E: Monitoring and Alerting</h3>
+<div class="checklist">
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Schedule check to HTTP request to If branch to Slack alert</strong><span>Monitor any API, webpage, or system and get notified when something changes or breaks.</span></div></div>
+</div>
+
+<h2>4. Error Handling and Reliability</h2>
+<p>This is what separates a workflow that works in testing from one that works in production:</p>
+<div class="checklist">
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Add error handling branches</strong><span>Every workflow should have an error path. If the main action fails, notify yourself via Slack or email instead of silently failing.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Use the Error Trigger node</strong><span>Set up a global error handler that runs when any workflow fails. It can send alerts, log to a file, or retry.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Add retry logic with Wait nodes</strong><span>When calling APIs, sometimes they fail temporarily. Use Wait nodes with exponential backoff instead of immediately erroring.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Validate inputs before processing</strong><span>Use If nodes to check that required data is present before sending it to OpenAI or an external API.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Log outputs for debugging</strong><span>Add a node at the end that saves the full workflow output to Google Sheets or a file.</span></div></div>
+</div>
+
+<h2>5. Production Deployment</h2>
+<div class="checklist">
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Move n8n from --rm to a persistent Docker setup</strong><span>Use docker-compose with environment variables, persistent volumes, and automatic restart.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Set up a reverse proxy with HTTPS</strong><span>Let's Encrypt via Docker Compose or Cloudflare. Your webhooks need HTTPS to work with most services.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Store secrets in environment variables</strong><span>Never hardcode API keys in workflow JSON. Use n8n's environment variable system.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Export and version-control your workflows</strong><span>Save workflow JSON files in git. This is your backup and makes it easy to share templates.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Set up monitoring for uptime</strong><span>Use a service like UptimeRobot or a simple n8n cron job that pings your instance every 5 minutes.</span></div></div>
+</div>
+
+<h2>6. Next Steps</h2>
+<div class="checklist">
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Build one workflow per week</strong><span>Pick a real problem in your workflow and automate it. Start simple. Iteration beats perfection.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Join the n8n community</strong><span>r/n8n on Reddit, the n8n forum, and n8n's Discord are great places to learn and get help.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Explore advanced features</strong><span>Multi-tenancy, custom nodes, binary data handling, and workflow variables unlock more complex automations.</span></div></div>
+<div class="checklist-item"><div class="check"></div><div class="check-item-text"><strong>Check out the n8n Starter Pack</strong><span>14 import-ready workflow templates covering the patterns above. Skip the setup time and start automating immediately.</span></div></div>
+</div>
+
+<div class="cta-section">
+<h2>Want to Skip the Setup?</h2>
+<p>14 import-ready n8n workflow templates for email triage, invoicing, lead capture, monitoring, content repurposing, and more. Import and start in minutes.</p>
+<a href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05" class="cta-btn">Get the n8n Starter Pack -- $97</a>
+<p class="guarantee">30-day money-back guarantee. Instant digital delivery.</p>
+</div>
+
+<div class="related">
+<h3>Related Guides</h3>
+<ul>
+<li><a href="/blog/n8n-email-triage-guide/">Email Triage Bot -- Step-by-Step Guide</a></li>
+<li><a href="/blog/n8n-invoice-automation-guide/">Invoice Automation Guide</a></li>
+<li><a href="/blog/n8n-webhook-tutorial/">n8n Webhook Tutorial</a></li>
+<li><a href="/blog/n8n-openai-node/">n8n OpenAI Node Guide</a></li>
+<li><a href="/blog/n8n-slack-integration/">n8n Slack Integration Guide</a></li>
+</ul>
+</div>
+
+<footer>
+<p>Made by AiMe. Free n8n automation resources.</p>
+</footer>
+
+</div>
+<!-- n8n-automation-checklist-publish-marker -->
+</body>
+</html>
