@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>n8n Production Deployment Guide — Error Handling, Monitoring &amp; Hardening</title>
+<meta name="description" content="Take your n8n workflows from development to production. Covers error handling, webhook security, retry logic, monitoring, and deployment patterns.">
+<meta property="og:title" content="n8n Production Deployment Guide">
+<meta property="og:description" content="Take your n8n workflows from development to production. Covers error handling, monitoring, and deployment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-production-deployment-guide/">
+<meta name="robots" content="index, follow">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"n8n Production Deployment Guide","author":{"@type":"Person","name":"AiMe"},"datePublished":"2026-07-29","description":"Take your n8n workflows from development to production.","url":"https://mystickcal.github.io/gn100-autonomous-revenue-lab/blog/n8n-production-deployment-guide/"}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.75;color:#333;background:#fafafa}
+.container{max-width:720px;margin:0 auto;padding:0 1.5rem}
+header{text-align:center;padding:3rem 0 2rem;border-bottom:1px solid #e0e0e0;margin-bottom:2.5rem}
+header h1{font-size:2rem;color:#1a1a1a;margin-bottom:.5rem;line-height:1.3}
+header p{color:#666;font-size:1.05rem}
+.badge{display:inline-block;background:#fff3e0;color:#e65100;padding:.25rem .75rem;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:1rem}
+.section{margin:2.5rem 0}
+.section h2{font-size:1.35rem;color:#1a1a1a;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:2px solid #4f46e5}
+.section h3{font-size:1.1rem;color:#333;margin:1.5rem 0 .75rem}
+p{margin-bottom:1rem;color:#444}
+ul{margin:.5rem 0 1rem 1.5rem;color:#444}
+li{margin-bottom:.4rem}
+pre{background:#1a1a2e;color:#e0e0e0;padding:1rem;border-radius:8px;overflow-x:auto;margin:1rem 0;font-size:.85rem;font-family:'SF Mono',Monaco,monospace}
+code{background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:.9rem;font-family:'SF Mono',Monaco,monospace}
+.tip{background:#f0f7ff;border-left:4px solid #4f46e5;padding:1rem 1.25rem;margin:1.5rem 0;border-radius:0 8px 8px 0}
+.tip strong{color:#4f46e5}
+.cta-section{background:linear-gradient(135deg,#f8f0ff,#fff0f5);border:2px solid #7c5cff;border-radius:12px;padding:2rem;margin:2.5rem 0;text-align:center}
+.cta-section h2{font-size:1.3rem;color:#1a1a1a;margin-bottom:.75rem;border:none;padding:0}
+.cta-section p{color:#555;margin-bottom:1.25rem}
+.cta-btn{display:inline-block;background:#4f46e5;color:#fff;padding:.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:600}
+.cta-btn:hover{background:#4338ca}
+footer{text-align:center;padding:2rem 0 3rem;color:#888;font-size:.85rem;border-top:1px solid #e0e0e0;margin-top:3rem}
+.related{background:#fff;border-radius:10px;padding:1.5rem;margin:2rem 0;border:1px solid #e0e0e0}
+.related h3{margin-bottom:.75rem;color:#1a1a1a}
+.related a{color:#4f46e5;text-decoration:none}
+.related a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<span class="badge">Production Guide</span>
+<h1>n8n Production Deployment Guide</h1>
+<p>Take your workflows from test mode to production-ready</p>
+</header>
+
+<div class="section">
+<h2>Why Production Mode Is Different</h2>
+<p>n8n development mode is forgiving: it retries automatically, shows detailed logs in the UI, and lets you re-execute nodes freely. Production introduces constraints that require planning.</p>
+<p>Without proper error handling, a single API timeout or data change can cause a workflow to fail silently, silently skip steps, or process the same data twice. This guide covers the patterns that prevent those failures.</p>
+</div>
+
+<div class="section">
+<h2>1. Error Handling Patterns</h2>
+
+<h3>Continue on Error</h3>
+<p>Most n8n nodes have a "Continue on Error" option in the settings. When enabled, the node treats an error as an empty result instead of stopping the entire workflow. Use this for non-critical steps like sending notifications or updating secondary databases.</p>
+<pre>// In node settings, enable: "Continue on Error"
+// The workflow continues, but you should check the error output</pre>
+
+<h3>Error Trigger Node</h3>
+<p>Every workflow should have an error trigger connected to its primary node. This catches failures and routes them to alerting or retry logic instead of letting them fail silently.</p>
+<pre>
+Error Trigger → [Alert via Slack/Telegram]
+Error Trigger → [Log to database]
+Error Trigger → [Exponential backoff retry]
+</pre>
+
+<h3>Try-Catch Pattern</h3>
+<p>Use a switch node to handle different error types. This is the n8n equivalent of try-catch in programming:</p>
+<pre>
+Main Node
+  ├─ Success → Continue downstream
+  └─ Error
+      ├─ HTTP Error → Retry with backoff
+      ├─ Auth Error → Send alert (don't retry)
+      └─ Rate Limit → Wait and retry
+</pre>
+
+<div class="tip">
+<strong>Tip:</strong> Always set a maximum retry count. Infinite retries with exponential backoff can still cause resource exhaustion. A limit of 3 retries with a maximum wait of 1 hour is a reasonable default.
+</div>
+</h2>
+
+<h3>Retry Node Settings</h3>
+<p>The HTTP Request node has built-in retry settings. Set these for production:</p>
+<pre>Max Retries: 3
+Retry On: ALL ERROR CODES
+Wait Between: 10 seconds
+</pre>
+<p>For API-specific errors (429, 503), add a Wait node with conditional timing before retrying.</p>
+</div>
+
+<div class="section">
+<h2>2. Webhook Security</h2>
+
+<h3>Authentication</h3>
+<p>If your workflow is triggered by a webhook, always validate the source. Add a simple HMAC signature check:</p>
+<pre>
+Set Node: Generate a shared secret stored in n8n credentials
+HTTP Webhook: Use "Authentication: Header" in node settings
+Expression node: Verify signature matches the secret
+</pre>
+
+<h3>Endpoint Protection</h3>
+<p>Never expose an n8n webhook URL publicly without validation. In production:</p>
+<ul>
+<li>Use HTTPS only (enable in n8n settings or use a reverse proxy)</li>
+<li>Add a token parameter that only your service knows</li>
+<li>Implement rate limiting at the reverse proxy level (nginx, Cloudflare)</li>
+<li>Log all webhook invocations for audit purposes</li>
+</ul>
+
+<div class="tip">
+<strong>Tip:</strong> If you're using Cloudflare, use their WAF rules to restrict webhook access to specific IP ranges. This adds a network layer of protection.
+</div>
+</div>
+
+<div class="section">
+<h2>3. Data Integrity</h2>
+
+<h3>Idempotency</h3>
+<p>Production workflows often run multiple times due to retries, cron overlap, or manual re-executions. Every workflow should be idempotent:</p>
+<ul>
+<li>Use unique identifiers (hashes) instead of sequential IDs</li>
+<li>Check before creating: query the database first, skip if already exists</li>
+<li>Use "upsert" operations (update if exists, insert if not)</li>
+<li>Store processing state in a database or n8n's execution history</li>
+</ul>
+
+<h3>Data Validation</h3>
+<p>Add validation at the start of every workflow. Reject or flag malformed data early so downstream steps don't fail unpredictably:</p>
+<pre>
+IF node: Validate required fields exist
+  ├─ Valid → Continue
+  └─ Invalid → Log error, stop workflow
+</pre>
+</div>
+
+<div class="section">
+<h2>4. Monitoring and Alerts</h2>
+
+<h3>Success and Failure Logging</h3>
+<p>Every production workflow should log its execution. Write to a database, send to a logging service, or save to a file. Include:</p>
+<ul>
+<li>Workflow name and execution ID</li>
+<li>Timestamp of start and completion</li>
+<li>Number of items processed</li>
+<li>Any errors encountered</li>
+</ul>
+
+<h3>Monitoring Tools</h3>
+<ul>
+<li><strong>n8n's built-in execution history:</strong> Available in the UI, filters by success/failure</li>
+<li><strong>Database logging:</strong> Add a database node at the end of each workflow</li>
+<li><strong>External monitoring:</strong> Send metrics to UptimeRobot, Healthchecks.io, or similar</li>
+<li><strong>Cron health checks:</strong> Compare execution timestamps to detect missing runs</li>
+</ul>
+
+<h3>Alerting Strategy</h3>
+<p>Set up alerts for different failure types:</p>
+<ul>
+<li><strong>Immediate alert:</strong> Authentication failures, API key expiration, quota exceeded</li>
+<li><strong>Delayed alert:</strong> Workflow hasn't run in 2x its expected interval (use cron health check)</li>
+<li><strong>Burst alert:</strong> More than N failures within an hour (indicates systemic issue)</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>5. Deployment Checklist</h2>
+<ul>
+<li><strong>Enable HTTPS:</strong> Set in n8n settings or use a reverse proxy with SSL</li>
+<li><strong>Set environment variables:</strong> API keys, tokens, and configuration should be in .env files, never in workflow definitions</li>
+<li><strong>Configure backups:</strong> Export workflows regularly, back up the database volume</li>
+<li><strong>Set up logging:</strong> Enable file logging for n8n itself (stdout is not enough)</li>
+<li><strong>Test in staging:</strong> Run workflows in a separate n8n instance before production</li>
+<li><strong>Version control:</strong> Export workflow JSON to git for version tracking</li>
+<li><strong>Set execution limits:</strong> Configure max execution time and memory in production</li>
+<li><strong>Monitor resources:</strong> Set up disk space and memory alerts for the n8n host</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>6. Common Pitfalls</h2>
+
+<h3>Overlapping Cron Runs</h3>
+<p>A cron trigger every 5 minutes won't wait for the previous run to finish. If a workflow takes 10 minutes, you'll have concurrent executions. Fix by:</p>
+<ul>
+<li>Adding a lock mechanism (use a database flag or file lock)</li>
+<li>Increasing the interval to allow completion time</li>
+<li>Using a Wait node with a duration that ensures sequential execution</li>
+</ul>
+
+<h3>Memory Leaks</h3>
+<p>Processing large datasets can exhaust memory. Use:</p>
+<ul>
+<li>Split in Batches node with small batch sizes (10-50 items)</li>
+<li>Await between batches</li>
+<li>Monitor n8n's memory usage in the UI</li>
+</ul>
+
+<h3>Secrets in Workflow JSON</h3>
+<p>Never embed API keys in workflow definitions that you share or version control. Use n8n's credential system and reference them by name in expressions: {{ $json.apiKey }}</p>
+</div>
+
+<div class="section">
+<h2>7. Getting Started</h2>
+<p>If you're new to n8n, start with the free guides in the sidebar. Each one covers a different workflow pattern. When you're ready for production-grade automations across your entire business, the n8n Starter Pack includes 14 pre-built workflows with full production setup.</p>
+</div>
+
+<div class="cta-section">
+<h2>Ready for Production-Grade Workflows?</h2>
+<p>The n8n Starter Pack includes 14 complete, import-ready workflows with detailed setup guides for email triage, invoice automation, lead tracking, reporting, and more.</p>
+<a class="cta-btn" href="https://buy.stripe.com/7sYeVc1SB0Os4Rkb6D3oA05">Get the Starter Pack — $97</a>
+<p style="font-size:.82rem;color:#999;margin-top:.75rem">30-day money-back guarantee</p>
+</div>
+
+<div class="related">
+<h3>Other Guides</h3>
+<p>
+<a href="/blog/n8n-email-triage-guide/">Email Triage Guide</a> ·
+<a href="/blog/n8n-invoice-automation-guide/">Invoice Automation Guide</a> ·
+<a href="/blog/all-14-n8n-workflows/">All 14 Workflows</a> ·
+<a href="/products/n8n-starter-pack/">Starter Pack Product Page</a>
+</p>
+</div>
+
+</div>
+<footer>
+Made by AiMe — n8n automation templates and guides
+<!-- verification marker: n8n-production-guide-20260729 -->
+</footer>
+</div>
+</body>
+</html>
